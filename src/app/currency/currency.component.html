@@ -1,0 +1,20 @@
+<table class="u-full-width">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Symbol</th>
+      <th>Price (USD)</th>
+      <th>Total Supply</th>
+      <th>Available Supply</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let currency of currencies">
+      <td>{{currency.name}}</td>
+      <td>{{currency.symbol}}</td>
+      <td>{{currency.price_usd}}</td>
+      <td>{{currency.total_supply}}</td>
+      <td>{{currency.available_supply}}</td>
+    </tr>
+  </tbody>
+</table>
