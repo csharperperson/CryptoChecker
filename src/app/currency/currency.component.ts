@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CurrencyService } from './currency.service';
 import { Currency } from './currency';
+import { Observable } from 'rxjs/Rx';
 
 @Component({
   selector: 'app-currency',
@@ -8,16 +9,27 @@ import { Currency } from './currency';
   styleUrls: ['./currency.component.css']
 })
 
-export class CurrencyComponent implements OnInit {
+export class CurrencyComponent implements OnInit, OnDestroy {
   currencies: Currency[];
+  timer: Observable<number>;
+  alive: boolean;
 
   constructor(private currencyService: CurrencyService) {
-    this.currencyService.getCurrencies().subscribe(currencies => {
-      this.currencies = currencies;
-    });
+    this.timer = Observable.timer(0, 10000);
+    this.alive = true;
   }
 
   ngOnInit() {
+    this.timer
+    .takeWhile(() => this.alive)
+    .subscribe(() => {
+      this.currencyService.getCurrencies().subscribe(currencies => {
+        this.currencies = currencies;
+      });
+    });
   }
 
+  ngOnDestroy() {
+    this.alive = false;
+  }
 }
