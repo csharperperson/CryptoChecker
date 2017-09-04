@@ -1,5 +1,5 @@
 .card {
-    height: 150px;
+    height: 160px;
     padding-bottom: 10%;
     padding-top: 10%;
     box-shadow: 0 1px 5px rgba(0,0,0,0.12), 0 1px 4px rgba(0,0,0,0.24);
@@ -18,16 +18,19 @@
 .info span {
     display: block;
     text-align: center;
+    overflow: hidden;    
 }
 
 .info b {
     display: block;
     text-align: center;
+    overflow: hidden;    
 }
 
 .info h5 {
     padding-top: 10px;
     text-align: center;
+    overflow: hidden;
 }
 
 
