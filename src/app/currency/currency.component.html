@@ -1,20 +1,25 @@
-<table class="u-full-width">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Symbol</th>
-      <th>Price (USD)</th>
-      <th>Total Supply</th>
-      <th>Available Supply</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let currency of currencies">
-      <td>{{currency.name}}</td>
-      <td>{{currency.symbol}}</td>
-      <td>{{currency.price_usd}}</td>
-      <td>{{currency.total_supply}}</td>
-      <td>{{currency.available_supply}}</td>
-    </tr>
-  </tbody>
-</table>
+<h2 class="title">Crypto Skeleton</h2>
+<div class="row">
+  <div class="two columns" *ngFor="let currency of currencies | slice:0:6;">
+    <div class="card">
+      <div class="info">
+        <h5>{{currency.name}}</h5>
+        <span>{{currency.symbol}}</span>
+        <b>${{currency.price_usd | number : '1.2-2'}}</b>
+        <span>{{currency.percent_change_24h}}%</span>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="two columns" *ngFor="let currency of currencies | slice:6:12;">
+    <div class="card">
+      <div class="info">
+        <h5>{{currency.name}}</h5>
+        <span>{{currency.symbol}}</span>
+        <b>${{currency.price_usd | number : '1.2-2'}}</b>
+        <span>{{currency.percent_change_24h}}%</span>
+      </div>
+    </div>
+  </div>
+</div>

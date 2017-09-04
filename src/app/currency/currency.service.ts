@@ -14,7 +14,7 @@ export class CurrencyService {
 
     getCurrencies(): Observable<Currency[]> {
         return this.http
-            .get(this.baseUrl + '/ticker/?limit=10')
+            .get(this.baseUrl + '/ticker/?limit=12')
             .map(response => response as Currency[]);
     }
 }

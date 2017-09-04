@@ -2,8 +2,8 @@ export class Currency {
     id: string;
     name: string;
     symbol: string;
-    rank: string;
-    price_usd: string;
+    rank: number;
+    price_usd: number;
     price_btc: string;
     '24h_volume_usd': string;
     market_cap_usd: string;
