@@ -19,14 +19,19 @@ export class CurrencyComponent implements OnInit, OnDestroy {
     this.alive = true;
   }
 
+  sendCurrencies(): void {
+    this.currencyService.sendCurrencies(this.currencies);
+  }
+
   ngOnInit() {
     this.timer
-    .takeWhile(() => this.alive)
-    .subscribe(() => {
-      this.currencyService.getCurrencies().subscribe(currencies => {
-        this.currencies = currencies;
+      .takeWhile(() => this.alive)
+      .subscribe(() => {
+        this.currencyService.getCurrencies().subscribe(currencies => {
+          this.currencies = currencies;
+          this.sendCurrencies();
+        });
       });
-    });
   }
 
   ngOnDestroy() {
