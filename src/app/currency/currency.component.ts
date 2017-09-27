@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CurrencyService } from './currency.service';
 import { Currency } from './currency';
 import { Observable } from 'rxjs/Rx';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-currency',
@@ -14,7 +15,7 @@ export class CurrencyComponent implements OnInit, OnDestroy {
   timer: Observable<number>;
   alive: boolean;
 
-  constructor(private currencyService: CurrencyService) {
+  constructor(private currencyService: CurrencyService, private router: Router) {
     this.timer = Observable.timer(0, 10000);
     this.alive = true;
   }
@@ -27,6 +28,10 @@ export class CurrencyComponent implements OnInit, OnDestroy {
         this.currencies = currencies;
       });
     });
+  }
+
+  goToDetail(currency: Currency): void {
+    this.router.navigate(['/currency/detail', currency.id]);
   }
 
   ngOnDestroy() {
