@@ -1,7 +1,7 @@
 <h2 class="title">Crypto Skeleton</h2>
 <div class="row">
   <div class="two columns" *ngFor="let currency of currencies | slice:0:6;">
-    <div class="card">
+    <div (click)="goToDetail(currency)" class="card">
       <div class="info">
         <h5>{{currency.name}}</h5>
         <span>{{currency.symbol}}</span>
@@ -13,7 +13,7 @@
 </div>
 <div class="row">
   <div class="two columns" *ngFor="let currency of currencies | slice:6:12;">
-    <div class="card">
+    <div (click)="goToDetail(currency)" class="card">
       <div class="info">
         <h5>{{currency.name}}</h5>
         <span>{{currency.symbol}}</span>
